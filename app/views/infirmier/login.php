@@ -1,10 +1,12 @@
 <?php 
-// Pas de session_start() ici car il est déjà dans index.php
+// 1. DÉFINITION DES VARIABLES (Identité de la page de connexion)
+$pageTitle  = "infirmier | Connexion Infirmier"; 
+$pageCSS    = "/santepro/public/css/style_login.css"; // Votre CSS spécifique au login
 
-// Utilisation de __DIR__ pour éviter les erreurs de chemin "Failed to open stream"
-include __DIR__ . '/../layouts/header_authen.php'; 
+// 2. INCLUSION DU HEADER SPÉCIFIQUE AUTHEN
+// On garde votre require_once avec __DIR__ pour la sécurité
+require_once __DIR__ . '/../layouts/header_authen.php'; 
 ?>
-
 <body class="login-page">
   <div class="login-wrapper"> 
     
@@ -24,6 +26,14 @@ include __DIR__ . '/../layouts/header_authen.php';
             else echo "Une erreur est survenue. Veuillez réessayer.";
           ?>
         </div>
+      <?php endif; ?>
+
+      <?php if (!empty($_SESSION['login_debug'])): ?>
+        <div class="alert alert-warning mb-3" role="alert">
+          <strong>Debug login :</strong>
+          <?php echo htmlspecialchars($_SESSION['login_debug']); ?>
+        </div>
+        <?php unset($_SESSION['login_debug']); ?>
       <?php endif; ?>
 
       <form action="index.php?page=process_login" method="POST">

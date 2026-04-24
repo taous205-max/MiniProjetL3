@@ -1,11 +1,9 @@
 <?php
-require_once __DIR__ . '/../models/TicketModel.php';
-
 class TicketController {
     private $model;
 
-    public function __construct($pdo) {
-        $this->model = new TicketModel($pdo);
+    public function __construct($ticketModel) {
+        $this->model = $ticketModel;
     }
 
     /**
@@ -34,10 +32,9 @@ class TicketController {
         if ($id_medecin) {
             // Le modèle passe l'ancien patient à 'Terminé'
             $this->model->appelerProchainPatient($id_medecin);
+            return true;
         }
-        
-        // Redirection systématique pour rafraîchir le dashboard
-        header("Location: index.php?page=dashbord");
-        exit;
+        return false;
     }
 }
+?>

@@ -11,7 +11,7 @@ class TicketModel {
      * Le nom et le prénom ne s'affichent QUE si le médecin a validé.
      */
     public function getTicketEnCours($id_medecin) {
-        $sql = "SELECT t.code_ticket, u.nom, u.prenom 
+        $sql = "SELECT t.numero, u.nom, u.prenom 
                 FROM ticket t 
                 JOIN rendez_vous r ON t.id_rdv = r.id_rdv 
                 JOIN utilisateur u ON r.id_patient = u.id 
@@ -32,13 +32,13 @@ class TicketModel {
      */
     public function appelerProchainPatient($id_medecin) {
         // A. On termine SEULEMENT la consultation qui était en cours
-        $this->db->prepare("UPDATE rendez_vous SET statut = 'Terminé' 
-                            WHERE statut = 'Chez le médecin' 
-                            AND id_medecin = :id 
-                            AND date = CURDATE()")
-                 ->execute(['id' => $id_medecin]);
+        $stmt = $this->db->prepare("UPDATE rendez_vous SET statut = 'Terminé'
+                            WHERE statut = 'Chez le médecin'
+                            AND id_medecin = :id
+                            AND date = CURDATE()");
+        $stmt->execute(['id' => $id_medecin]);
 
-        // L'infirmier a fini son travail ici. 
+        // L'infirmier a fini son travail ici.
         return true;
     }
 
@@ -49,20 +49,20 @@ class TicketModel {
      */
     public function getProchainTicketAffichage($id_medecin) {
         // On cherche le ticket qui est soit déjà chez le médecin, soit le prochain à passer
-        $sql = "SELECT t.code_ticket 
+        $sql = "SELECT t.numero 
                 FROM ticket t 
                 JOIN rendez_vous r ON t.id_rdv = r.id_rdv 
                 WHERE r.id_medecin = :id 
                 AND r.statut IN ('Chez le médecin', 'Présent') 
                 AND r.date = CURDATE() 
                 ORDER BY CASE WHEN r.statut = 'Chez le médecin' THEN 1 ELSE 2 END ASC, 
-                         r.id_rdv ASC 
+                         t.numero ASC 
                 LIMIT 1";
                 
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['id' => $id_medecin]);
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        return $res['code_ticket'] ?? '---';
+        return $res['numero'] ?? '---';
     }
 }

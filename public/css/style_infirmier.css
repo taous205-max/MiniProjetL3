@@ -212,6 +212,16 @@ body {
     color: white;
 }
 
+.btn-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-group .btn {
+    flex: 1;
+    padding: 12px 20px;
+}
+
 .btn-call {
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Bleu moderne */
     color: white;
@@ -721,6 +731,22 @@ body {
     font-weight: 700;
     text-transform: uppercase;
 }
+row-red {
+    background-color: #fee2e2 !important; /* Rouge clair */
+}
 
-/* Cache les messages d'erreur orange d'Xdebug pour garder le design propre */
-.xdebug-error { display: none !important; }
+.row-red td {
+    background-color: #fee2e2 !important; /* Force sur les cellules */
+    color: #b91c1c !important; /* Texte en rouge foncé */
+}
+
+/* Optionnel : changer la couleur du nom du patient quand c'est annulé */
+.row-red .patient-name {
+    color: #b91c1c !important;
+    font-weight: bold;
+}
+.ligne-terminee {
+    opacity: 0.8;
+    background-color: #f9fafb !important;
+}
+
