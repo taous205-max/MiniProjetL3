@@ -5,7 +5,7 @@ $pageCSS    = "/santepro/public/css/style_login.css"; // Votre CSS spécifique a
 
 // 2. INCLUSION DU HEADER SPÉCIFIQUE AUTHEN
 // On garde votre require_once avec __DIR__ pour la sécurité
-require_once __DIR__ . '/../layouts/header_authen.php'; 
+require_once __DIR__ . '/../layout/header_authen.php'; 
 ?>
 <body class="login-page">
   <div class="login-wrapper"> 

@@ -4,8 +4,8 @@ $pageTitle  = "infirmier | Sélection du Médecin";
 $pageCSS    = "/santepro/public/css/style_infirmier.css"; 
 
 // 2. INCLUSION DES COMPOSANTS
-require_once __DIR__ . '/../layouts/header.php'; 
-require_once __DIR__ . '/../layouts/sidebar.php'; 
+require_once __DIR__ . '/../layout/header.php'; 
+require_once __DIR__ . '/../layout/sidebar/sidebar_infirmier.php'; 
 ?>
 
 <div class="main-content">
@@ -54,4 +54,4 @@ require_once __DIR__ . '/../layouts/sidebar.php';
     </div>
 </div>
 
-<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layout/footer.php'; ?>

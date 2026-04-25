@@ -5,8 +5,8 @@ $pageCSS    = "/santepro/public/css/style_infirmier.css"; // Chemin vers votre C
 $pageScript = "/santepro/public/js/script_infirmier/presencePatient.js"; 
 
 // 2. INCLUSION DES COMPOSANTS DE STRUCTURE
-require_once __DIR__ . '/../layouts/header.php'; 
-require_once __DIR__ . '/../layouts/sidebar.php'; 
+require_once __DIR__ . '/../layout/header.php'; 
+require_once __DIR__ . '/../layout/sidebar/sidebar_infirmier.php'; 
 ?>
 
 <style>
@@ -117,4 +117,4 @@ require_once __DIR__ . '/../layouts/sidebar.php';
 
 <script src="js/script_infirmier/presencePatient.js"></script>
 
-<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layout/footer.php'; ?>

@@ -5,8 +5,8 @@ $pageCSS    = "/santepro/public/css/style_infirmier.css"; // Chemin vers ton CSS
 $pageScript = "/santepro/public/js/script_infirmier/dashbord.js"; // Déplacement du script en haut
 
 // 2. INCLUSION DES COMPOSANTS DE STRUCTURE
-require_once __DIR__ . '/../layouts/header.php'; 
-require_once __DIR__ . '/../layouts/sidebar.php'; 
+require_once __DIR__ . '/../layout/header.php'; 
+require_once __DIR__ . '/../layout/sidebar/sidebar_infirmier.php'; 
 ?>
 
 <div class="main-content">
@@ -127,5 +127,5 @@ require_once __DIR__ . '/../layouts/sidebar.php';
 </div>
 </div>
 
-<?php require_once __DIR__ . '/../layouts/footer.php'; ?>
+<?php require_once __DIR__ . '/../layout/footer.php'; ?>
 <script src="js/script_infirmier/dashbord.js"></script>
