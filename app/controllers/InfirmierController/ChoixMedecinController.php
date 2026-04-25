@@ -27,7 +27,8 @@ class ChoixMedecinController {
         $pageTitle = "Sélection du Médecin | Santé Pro";
         $pageCSS = "css/style_infirmier.css"; 
 
-        require_once __DIR__ . '/../views/Infirmier/choix_medecin.php';
+        // Remonter de deux crans pour atteindre APP/views
+require_once __DIR__ . '/../../views/Infirmier/choix_medecin.php';
     }
 
     public function selectDoctor($id_medecin) {

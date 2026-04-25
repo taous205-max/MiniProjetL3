@@ -52,7 +52,8 @@ class DashboardController {
         $pageTitle = "Tableau de Bord | Santé Pro";
         $pageCSS = "css/style_infirmier.css"; 
         
-        require_once __DIR__ . '/../views/Infirmier/dashbord.php';
+       // On remonte de InfirmierController (1) puis de controllers (2) pour atteindre APP/views
+require_once __DIR__ . '/../../views/Infirmier/dashbord.php';
     }
 
     private function updateDocStatus() {

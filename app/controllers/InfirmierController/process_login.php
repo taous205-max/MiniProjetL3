@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/../../config/db.php';
-require_once __DIR__ . '/../Imodel/InfirmierModel.php';
+
 
 // Initialisation du modèle
 $infirmierModel = new InfirmierModel($pdo);

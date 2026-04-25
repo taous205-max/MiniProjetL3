@@ -7,16 +7,16 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once __DIR__ . '/../config/db.php';
 
 // 2. Chargement automatique des Modèles (Optionnel mais recommandé)
-require_once __DIR__ . '/../app/Imodel/RendezVousModel.php';
-require_once __DIR__ . '/../app/Imodel/GestionMedecinModel.php';
-require_once __DIR__ . '/../app/Imodel/TicketModel.php';
-require_once __DIR__ . '/../app/Imodel/InfirmierModel.php';
+require_once __DIR__ . '/../APP/Models/infirmier_models/RendezVousModel.php';
+require_once __DIR__ . '/../APP/Models/infirmier_models/GestionMedecinModel.php';
+require_once __DIR__ . '/../APP/Models/infirmier_models/TicketModel.php';
+require_once __DIR__ . '/../APP/Models/infirmier_models/InfirmierModel.php';
 
 // 3. Chargement des Contrôleurs
-require_once __DIR__ . '/../app/InfirmierController/DashboardController.php';
-require_once __DIR__ . '/../app/InfirmierController/TicketController.php';
-require_once __DIR__ . '/../app/InfirmierController/RendezVousController.php';
-require_once __DIR__ . '/../app/InfirmierController/ChoixMedecinController.php';
+require_once __DIR__ . '/../APP/Controllers/InfirmierController/DashboardController.php';
+require_once __DIR__ . '/../APP/Controllers/InfirmierController/TicketController.php';
+require_once __DIR__ . '/../APP/Controllers/InfirmierController/RendezVousController.php';
+require_once __DIR__ . '/../APP/Controllers/InfirmierController/ChoixMedecinController.php';
 
 // 4. Initialisation de la page
 $page = $_GET['page'] ?? 'login';
@@ -31,11 +31,11 @@ if (!isset($_SESSION['user']) && !in_array($page, $public_pages)) {
 // 6. Routage des pages
 switch ($page) {
     case 'login':
-        require_once __DIR__ . '/../app/views/Infirmier/login.php';
+        require_once __DIR__ . '/../APP/views/Infirmier/login.php';
         break;
 
     case 'process_login':
-        require_once __DIR__ . '/../app/InfirmierController/process_login.php';
+        require_once __DIR__ . '/../APP/Controllers/InfirmierController/process_login.php';
         break;
 
     case 'logout':
